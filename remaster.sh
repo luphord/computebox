@@ -69,6 +69,10 @@ cd /home/luphord
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
 sudo -u luphord codium --install-extension julialang.language-julia
 
+# git config
+sudo -u luphord git config --global user.name "luphord"
+sudo -u luphord git config --global user.email "luphord@protonmail.com"
+
 # done!
 echo "--- DONE REMASTERING, took $(echo $(date +%s) - $START | bc) sec ---"
 
