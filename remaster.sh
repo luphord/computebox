@@ -53,6 +53,20 @@ glib-compile-schemas .
 # Prepare user home
 echo "Welcome to remastered home!" > /etc/skel/README.md
 
+# customize default keyboard layout
+cat << EOF > /etc/default/keyboard
+# KEYBOARD CONFIGURATION FILE
+
+# Consult the keyboard(5) manual page.
+
+XKBMODEL="pc105"
+XKBLAYOUT="de"
+XKBVARIANT="nodeadkeys"
+XKBOPTIONS=""
+
+BACKSPACE="guess"
+EOF
+
 # customize user luphord
 useradd -s /bin/bash -m luphord
 usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin,docker luphord
