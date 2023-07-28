@@ -15,7 +15,13 @@ apt-get update
 # remove packages deemed unnecessary for this use case
 apt-get autoremove -y --purge libreoffice-* drawing hexchat hypnotix rhythmbox thunderbird
 # install packages
-apt-get install -y micro git tmux htop btop neofetch sqlitebrowser codium docker.io arc-theme papirus-icon-theme
+apt-get install -y \
+    micro xsel xdotool git tmux htop btop neofetch \
+    python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit \
+    sqlitebrowser codium docker.io docker-compose \
+    screenkey \
+    firefox keepass2 \
+    arc-theme papirus-icon-theme
 # perform upgrade of packages contained before remastering
 apt-get upgrade -y
 
