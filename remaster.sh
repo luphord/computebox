@@ -93,10 +93,15 @@ sudo -u luphord codium --install-extension julialang.language-julia
 sudo -u luphord git config --global user.name "luphord"
 sudo -u luphord git config --global user.email "luphord@protonmail.com"
 
-# done!
-echo "--- DONE REMASTERING, took $(echo $(date +%s) - $START | bc) sec ---"
-
 # change user password
 echo "--- CHANGE PASSWORD FOR USER luphord ---"
 passwd luphord
 
+# cleanup
+apt-get clean
+rm -r /tmp/*
+rm -r /root/*
+rm -r /var/cache/*
+
+# done!
+echo "--- DONE REMASTERING, took $(echo $(date +%s) - $START | bc) sec ---"
