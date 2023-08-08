@@ -84,6 +84,8 @@ autologin-user=luphord
 autologin-user-timeout=0
 EOF
 cd /home/luphord
+# juliaup and julia packages
+sudo -u luphord curl -fsSL https://install.julialang.org | sudo -u luphord sh -s -- --yes
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
