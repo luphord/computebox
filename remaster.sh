@@ -29,6 +29,7 @@ apt-get upgrade -y
 # gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
 # gsettings set org.cinnamon.desktop.interface gtk-theme "Arc-Dark"
 # gsettings set org.cinnamon.theme name "Arc-Dark"
+cp computebox-wallpaper.jpg /usr/share/backgrounds/
 cd /usr/share/glib-2.0/schemas
 cat << EOF > zz_custom_cinnamon.gschema.override
 [x.dm.slick-greeter]
@@ -53,7 +54,8 @@ theme = 'Arc-Dark'
 name = 'Arc-Dark'
 
 [org.cinnamon.desktop.background]
-picture-uri='file:///usr/share/backgrounds/linuxmint/ktee_linuxmint.png'
+picture-uri='file:///usr/share/backgrounds/computebox-wallpaper.jpg'
+picture-options='zoom'
 EOF
 glib-compile-schemas .
 # Prepare user home
