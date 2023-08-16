@@ -26,7 +26,7 @@ apt-get install -y \
 apt-get upgrade -y
 
 # Create WebApp script
-mv creat_webapp.py /usr/local/bin
+mv create_webapp.py /usr/local/bin
 
 # Cinnamon settings
 # gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
