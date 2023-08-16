@@ -25,6 +25,9 @@ apt-get install -y \
 # perform upgrade of packages contained before remastering
 apt-get upgrade -y
 
+# Create WebApp script
+mv creat_webapp.py /usr/local/bin
+
 # Cinnamon settings
 # gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
 # gsettings set org.cinnamon.desktop.interface gtk-theme "Arc-Dark"
@@ -88,6 +91,8 @@ EOF
 cd /home/luphord
 # juliaup and julia packages
 sudo -u luphord curl -fsSL https://install.julialang.org | sudo -u luphord sh -s -- --yes
+# webapp for julia docs
+create_webapp.py /home/luphord/.julia/juliaup/julia-1.9.2+0.x64.linux.gnu/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/luphord/.julia/juliaup/julia-1.9.2+0.x64.linux.gnu/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia

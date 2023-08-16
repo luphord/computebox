@@ -18,4 +18,4 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [x] Julia / juliaup (?) install
 - [ ] Julia base env with package selection
 - [x] Julia Vscodium extensions
-- [ ] WebApp for Julia documentation
+- [x] WebApp for Julia documentation
