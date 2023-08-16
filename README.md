@@ -15,7 +15,7 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [ ] mambaforge base env with package selection
 - [ ] Python VSCodium extensions
 - [ ] WebApp for Python documentation
-- [x] Julia / juliaup (?) install
+- [x] Julia / juliaup install
 - [ ] Julia base env with package selection
 - [x] Julia Vscodium extensions
 - [x] WebApp for Julia documentation
