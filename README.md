@@ -19,3 +19,4 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [ ] Julia base env with package selection
 - [x] Julia Vscodium extensions
 - [x] WebApp for Julia documentation
+- [ ] Fix Julia documentation index/icon paths s.t. they don't break with new Julia versions
