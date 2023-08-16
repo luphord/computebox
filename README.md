@@ -5,12 +5,15 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 
 - [ ] Firefox search engine, cookies, privacy settings
 - [ ] Fix preseeding (does not really seem to work)
-- [ ] Add and configure custom desktop background
+- [x] Add and configure custom desktop background
 - [ ] .NET
 - [ ] .NET VSCodium extensions
+- [ ] WebApp for .NET documentation
 - [ ] mambaforge install
 - [ ] mambaforge base env with package selection
 - [ ] Python VSCodium extensions
-- [ ] Julia / juliaup (?) install
+- [ ] WebApp for Python documentation
+- [x] Julia / juliaup (?) install
 - [ ] Julia base env with package selection
 - [x] Julia Vscodium extensions
+- [ ] WebApp for Julia documentation
