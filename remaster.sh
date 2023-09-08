@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# variables
+USER=luphord
+
 set -e
 
 START=$(date +%s)
@@ -78,33 +82,33 @@ XKBOPTIONS=""
 BACKSPACE="guess"
 EOF
 
-# customize user luphord
-useradd -s /bin/bash -m luphord
-usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin,docker luphord
+# customize user $USER
+useradd -s /bin/bash -m $USER
+usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin,docker $USER
 # from https://www.makeuseof.com/enable-disable-auto-login-on-linux-mint/
 cat << EOF > /etc/lightdm/lightdm.conf
 [Seat:*]
 autologin-guest=false
-autologin-user=luphord
+autologin-user=$USER
 autologin-user-timeout=0
 EOF
-cd /home/luphord
+cd /home/$USER
 # juliaup and julia packages
-sudo -u luphord curl -fsSL https://install.julialang.org | sudo -u luphord sh -s -- --yes
+sudo -u $USER curl -fsSL https://install.julialang.org | sudo -u $USER sh -s -- --yes
 # webapp for julia docs
-sudo -u luphord create_webapp.py /home/luphord/.julia/juliaup/julia-1.9.2+0.x64.linux.gnu/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/luphord/.julia/juliaup/julia-1.9.2+0.x64.linux.gnu/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
+sudo -u $USER create_webapp.py /home/$USER/.julia/juliaup/julia-1.9.2+0.x64.linux.gnu/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/$USER/.julia/juliaup/julia-1.9.2+0.x64.linux.gnu/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
-sudo -u luphord codium --install-extension julialang.language-julia
+sudo -u $USER codium --install-extension julialang.language-julia
 
 # git config
-sudo -u luphord git config --global user.name "luphord"
-sudo -u luphord git config --global user.email "luphord@protonmail.com"
+sudo -u $USER git config --global user.name "$USER"
+sudo -u $USER git config --global user.email "$USER@protonmail.com"
 
 # change user password
-echo "--- CHANGE PASSWORD FOR USER luphord ---"
-passwd luphord
+echo "--- CHANGE PASSWORD FOR USER $USER ---"
+passwd $USER
 
 # cleanup
 apt-get clean
