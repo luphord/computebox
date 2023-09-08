@@ -14,6 +14,8 @@ apt-get install -y curl dirmngr ca-certificates software-properties-common apt-t
 # VSCodium PPA
 curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscodium.gpg > /dev/null
 echo deb [signed-by=/usr/share/keyrings/vscodium.gpg] https://download.vscodium.com/debs vscodium main | sudo tee /etc/apt/sources.list.d/vscodium.list
+# cubic PPA
+apt-add-repository -y ppa:cubic-wizard/release
 # actual update including PPAs
 apt-get update
 # remove packages deemed unnecessary for this use case
@@ -22,7 +24,7 @@ apt-get autoremove -y --purge libreoffice-* drawing hexchat hypnotix rhythmbox t
 apt-get install -y \
     micro xsel xdotool git fossil tmux tree htop btop neofetch \
     python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit pipx \
-    sqlitebrowser codium docker.io docker-compose \
+    sqlitebrowser cubic codium docker.io docker-compose \
     rpi-imager \
     virt-manager qemu-kvm qemu-utils qemu-block-extra \
     screenkey \
