@@ -23,6 +23,7 @@ apt-get install -y \
     micro xsel xdotool git fossil tmux tree htop btop neofetch \
     python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit pipx \
     sqlitebrowser codium docker.io docker-compose \
+    rpi-imager \
     virt-manager qemu-kvm qemu-utils qemu-block-extra \
     screenkey \
     firefox keepass2 \
