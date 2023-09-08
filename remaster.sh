@@ -106,6 +106,9 @@ sudo -u $USER codium --install-extension julialang.language-julia
 sudo -u $USER git config --global user.name "$USER"
 sudo -u $USER git config --global user.email "$USER@protonmail.com"
 
+# alias code=codium
+sudo -u $USER echo 'alias code=codium' >> /home/$USER/.bashrc
+
 # change user password
 echo "--- CHANGE PASSWORD FOR USER $USER ---"
 passwd $USER
