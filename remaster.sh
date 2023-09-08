@@ -20,7 +20,7 @@ apt-get update
 apt-get autoremove -y --purge libreoffice-* drawing hexchat hypnotix rhythmbox thunderbird
 # install packages
 apt-get install -y \
-    micro xsel xdotool git tmux tree htop btop neofetch \
+    micro xsel xdotool git fossil tmux tree htop btop neofetch \
     python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit \
     sqlitebrowser codium docker.io docker-compose \
     virt-manager qemu-kvm qemu-utils qemu-block-extra \
