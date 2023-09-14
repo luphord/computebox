@@ -113,6 +113,9 @@ sudo -u $USER git config --global user.email "$USER@protonmail.com"
 # alias code=codium
 sudo -u $USER echo 'alias code=codium' >> /home/$USER/.bashrc
 
+# pipx-installable utilities
+sudo -u $USER pipx install rich-cli
+
 # change user password
 echo "--- CHANGE PASSWORD FOR USER $USER ---"
 passwd $USER
