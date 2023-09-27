@@ -6,6 +6,7 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [ ] Document creation ISO procedure with screenshots
 - [ ] Firefox search engine, cookies, privacy settings
 - [ ] Fix preseeding (does not really seem to work)
+- [ ] Add "Open in VSCodium" button to nemo context menu
 - [ ] Suppress VSCodium initial setup
 - [x] Add and configure custom desktop background
 - [ ] Improve wallpaper
@@ -19,7 +20,7 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [ ] WebApp for Python documentation
 - [x] Julia / juliaup install
 - [ ] Julia base env with package selection
-- [x] Julia Vscodium extensions
+- [x] Julia VSCodium extensions
 - [ ] Set Julia VSCodium extension data collection setting
 - [ ] Add start menu entry for julia repl
 - [x] WebApp for Julia documentation
