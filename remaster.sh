@@ -33,6 +33,18 @@ apt-get install -y \
 # perform upgrade of packages contained before remastering
 apt-get upgrade -y
 
+# add "Open in VSCodium" button to nemo file manager
+cat <<EOF > /usr/share/nemo/actions/vscodium.nemo_action
+[Nemo Action]
+Name=Open in VSCodium
+Comment=Open the current directory in VSCodium
+
+Exec=codium %P
+Icon-Name=vscodium
+Selection=none
+Extensions=any
+EOF
+
 # Create WebApp script
 mv create_webapp.py /usr/local/bin
 
