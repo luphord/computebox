@@ -22,14 +22,16 @@ apt-get update
 apt-get autoremove -y --purge libreoffice-* drawing hexchat hypnotix rhythmbox thunderbird
 # install packages
 apt-get install -y \
-    micro xsel xdotool git fossil tmux fzf tree htop btop nvtop neofetch \
+    micro xsel xdotool tmux fzf tree htop btop nvtop neofetch \
+    git fossil mercurial subversion \
     python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit pipx \
     python3-mypy python3-mypy-extensions black \
-    python3-jupyterlab-server ipython3 python3-numpy python3-matplotlib-inline python3-matplotlib python3-scipy python3-pandas \
+    jupyter jupyter-qtconsole python3-jupyterlab-server python3-ipywidgets ipython3 python3-numpy python3-matplotlib-inline python3-matplotlib python3-scipy python3-pandas quantlib-python \
     python3-doc python3-numpydoc \
-    sqlitebrowser cubic codium docker.io docker-compose \
-    rpi-imager \
-    virt-manager qemu-kvm qemu-utils qemu-block-extra \
+    sbcl slime chezscheme tcc valac \
+    sqlitebrowser meld glade codium spyder geany \
+    cubic rpi-imager \
+    virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose \
     screenkey \
     firefox keepass2 \
     arc-theme papirus-icon-theme
