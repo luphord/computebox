@@ -131,10 +131,6 @@ sudo -u $USER echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/$USER/.bashrc
 # pipx-installable utilities
 sudo -u $USER pipx install rich-cli
 
-# change user password
-echo "--- CHANGE PASSWORD FOR USER $USER ---"
-passwd $USER
-
 # cleanup
 apt-get clean
 rm -r /tmp/*
@@ -143,3 +139,7 @@ rm -r /var/cache/*
 
 # done!
 echo "--- DONE REMASTERING, took $(echo $(date +%s) - $START | bc) sec ---"
+
+# change user password
+echo "--- CHANGE PASSWORD FOR USER $USER ---"
+passwd $USER
