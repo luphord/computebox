@@ -19,7 +19,7 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [ ] WebApp for .NET documentation
 - [x] Selection of Python system packages
 - [ ] Add start menu entry for ipython
-- [ ] Add "Open in ipython" button to nemo context menu
+- [x] Add "Open in ipython" button to nemo context menu
 - [ ] mambaforge install
 - [ ] mambaforge base env with package selection
 - [ ] Python VSCodium extensions

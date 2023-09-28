@@ -50,6 +50,18 @@ Selection=none
 Extensions=any
 EOF
 
+# add "Open in IPython" button to nemo file manager
+cat <<EOF > /usr/share/nemo/actions/ipython.nemo_action
+[Nemo Action]
+Name=Open in IPython
+Comment=Open the current directory in IPython
+
+Exec=gnome-terminal --working-directory %P -- ipython3
+Icon-Name=ipython
+Selection=none
+Extensions=any
+EOF
+
 # Create WebApp script
 mv create_webapp.py /usr/local/bin
 
