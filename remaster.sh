@@ -62,6 +62,18 @@ Selection=none
 Extensions=any
 EOF
 
+# add IPython to start menu
+cat <<EOF > /usr/share/applications/ipython.desktop
+[Desktop Entry]
+Name=ipython
+Exec=ipython3
+Comment=Enhanced interactive Python 3 shell
+Terminal=true
+Icon=ipython
+Type=Application
+EOF
+chmod +x /usr/share/applications/ipython.desktop
+
 # Create WebApp script
 mv create_webapp.py /usr/local/bin
 
