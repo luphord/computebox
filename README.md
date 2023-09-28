@@ -28,7 +28,7 @@ Cubic-customized Linux Mint ISO for scientific computing purposes
 - [ ] Julia base env with package selection
 - [x] Julia VSCodium extensions
 - [ ] Set Julia VSCodium extension data collection setting
-- [ ] Add start menu entry for julia repl
+- [x] Add start menu entry for julia repl
 - [x] WebApp for Julia documentation
 - [x] Fix Julia documentation index/icon paths s.t. they don't break with new Julia versions
 - [ ] juliamono font
