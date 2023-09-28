@@ -145,7 +145,7 @@ JULIAUP=/home/$USER/.juliaup/bin/juliaup
 DEFAULT_JULIA=`sudo -u luphord $JULIAUP status | grep '*' | awk '{ print $3 }'`
 echo "Default julia is $DEFAULT_JULIA; should be of the format 1.9.3+0.x64.linux.gnu"
 # webapp for julia docs
-sudo -u $USER create_webapp.py /home/$USER/.julia/juliaup/$DEFAULT_JULIA/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/$USER/.julia/juliaup/$DEFAULT_JULIA/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
+sudo -u $USER create_webapp.py file:///home/$USER/.julia/juliaup/$DEFAULT_JULIA/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/$USER/.julia/juliaup/$DEFAULT_JULIA/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
