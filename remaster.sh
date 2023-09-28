@@ -157,8 +157,13 @@ sudo -u $USER curl -fsSL https://install.julialang.org | sudo -u $USER sh -s -- 
 JULIAUP=/home/$USER/.juliaup/bin/juliaup
 DEFAULT_JULIA_VERSION=`sudo -u luphord $JULIAUP status | grep '*' | awk '{ print $3 }'`
 echo "Default julia is $DEFAULT_JULIA_VERSION; should be of the format 1.9.3+0.x64.linux.gnu"
+
 # webapp for julia docs
 sudo -u $USER create_webapp.py file:///home/$USER/.julia/juliaup/julia-$DEFAULT_JULIA_VERSION/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/$USER/.julia/juliaup/$DEFAULT_JULIA_VERSION/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
+
+# webapp for python docs
+sudo -u $USER create_webapp.py file:///usr/share/doc/python3/html/index.html -n "Python Documentation" -i python -c Development WebApps
+
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
