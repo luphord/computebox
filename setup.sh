@@ -132,18 +132,6 @@ XKBOPTIONS=""
 BACKSPACE="guess"
 EOF
 
-# customize user $USER
-useradd -s /bin/bash -m $USER
-usermod -a -G adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,lpadmin,docker $USER
-# from https://www.makeuseof.com/enable-disable-auto-login-on-linux-mint/
-cat << EOF > /etc/lightdm/lightdm.conf
-[Seat:*]
-autologin-guest=false
-autologin-user=$USER
-autologin-user-timeout=0
-EOF
-cd /home/$USER
-
 # juliaup and julia packages
 sudo -u $USER curl -fsSL https://install.julialang.org | sudo -u $USER sh -s -- --yes
 JULIAUP=/home/$USER/.juliaup/bin/juliaup
