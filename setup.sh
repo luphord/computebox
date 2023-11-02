@@ -1,27 +1,29 @@
 #!/bin/sh
 
-# variables
-USER=luphord
+set -eux pipefail
 
-set -e
+# variables
+GIT_USER=$(USER)
+GIT_EMAIL="$(GIT_USER)@protonmail.com"
 
 START=$(date +%s)
 
 # initial update for base packages
-apt-get update
+sudo apt-get update
+
 # install base packages required for adding PPAs
-apt-get install -y curl dirmngr ca-certificates software-properties-common apt-transport-https -y
+sudo apt-get install -y curl dirmngr ca-certificates software-properties-common apt-transport-https -y
+
 # VSCodium PPA
-curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscodium.gpg > /dev/null
-echo deb [signed-by=/usr/share/keyrings/vscodium.gpg] https://download.vscodium.com/debs vscodium main | sudo tee /etc/apt/sources.list.d/vscodium.list
-# cubic PPA
-apt-add-repository -y ppa:cubic-wizard/release
+apt-get install codium -s >> /dev/null \
+	|| curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscodium.gpg > /dev/null \
+	&& echo deb [signed-by=/usr/share/keyrings/vscodium.gpg] https://download.vscodium.com/debs vscodium main | sudo tee /etc/apt/sources.list.d/vscodium.list
+
 # actual update including PPAs
-apt-get update
-# remove packages deemed unnecessary for this use case
-apt-get autoremove -y --purge libreoffice-* drawing hexchat hypnotix rhythmbox thunderbird
+sudo apt-get update
+
 # install packages
-apt-get install -y \
+sudo apt-get install -y \
     micro xsel xdotool tmux fzf tree htop btop nvtop neofetch \
     git fossil mercurial subversion \
     python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit pipx \
@@ -30,13 +32,13 @@ apt-get install -y \
     python3-doc python3-numpydoc \
     sbcl slime chezscheme tcc valac \
     sqlitebrowser meld glade codium spyder geany \
-    cubic rpi-imager \
     virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose \
-    screenkey \
+    screenkey redshift \
     firefox keepass2 \
     arc-theme papirus-icon-theme
+
 # perform upgrade of packages contained before remastering
-apt-get upgrade -y
+sudo apt-get upgrade -y
 
 # add "Open in VSCodium" button to nemo file manager
 cat <<EOF > /usr/share/nemo/actions/vscodium.nemo_action
@@ -170,8 +172,8 @@ sudo -u $USER create_webapp.py file:///usr/share/doc/python3/html/index.html -n 
 sudo -u $USER codium --install-extension julialang.language-julia
 
 # git config
-sudo -u $USER git config --global user.name "$USER"
-sudo -u $USER git config --global user.email "$USER@protonmail.com"
+sudo -u $USER git config --global user.name "$(GIT_USER)"
+sudo -u $USER git config --global user.email "$(GIT_EMAIL)"
 
 # alias code=codium
 sudo -u $USER echo 'alias code=codium' >> /home/$USER/.bashrc
@@ -189,8 +191,4 @@ rm -r /root/*
 rm -r /var/cache/*
 
 # done!
-echo "--- DONE REMASTERING, took $(echo $(date +%s) - $START | bc) sec ---"
-
-# change user password
-echo "--- CHANGE PASSWORD FOR USER $USER ---"
-passwd $USER
+echo "--- SETUP DONE, took $(echo $(date +%s) - $START | bc) sec ---"
