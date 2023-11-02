@@ -114,10 +114,12 @@ gsettings set org.gnome.desktop.background picture-uri "$WALLPAPER"
 gsettings set org.gnome.desktop.background picture-options zoom
 
 # Prepare user home
-echo "Welcome to remastered home!" > /etc/skel/README.md
+sudo tee /etc/skel/README.md > /dev/null <<EOF
+"Welcome to a new home!"
+EOF
 
 # customize default keyboard layout
-cat << EOF > /etc/default/keyboard
+sudo tee /etc/default/keyboard > /dev/null <<EOF
 # KEYBOARD CONFIGURATION FILE
 
 # Consult the keyboard(5) manual page.
