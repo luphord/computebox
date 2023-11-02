@@ -87,7 +87,7 @@ Type=Application
 EOF
 
 # Create WebApp script
-mv create_webapp.py /usr/local/bin
+sudo cp create_webapp.py /usr/local/bin
 
 # Prepare wallpaper
 mkdir -p ~/Pictures/wallpaper
