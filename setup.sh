@@ -72,17 +72,7 @@ Terminal=true
 Icon=ipython
 Type=Application
 EOF
-
-# add Julia REPL to start menu
-sudo tee /usr/share/applications/julia.desktop > /dev/null <<EOF
-[Desktop Entry]
-Name=julia
-Exec=julia
-Comment=Julia REPL
-Terminal=true
-Icon=julia
-Type=Application
-EOF
+sudo chmod +x /usr/share/applications/ipython.desktop
 
 # Create WebApp script
 sudo cp create_webapp.py /usr/local/bin
@@ -133,8 +123,23 @@ EOF
 # juliaup and julia packages
 which juliaup || curl -fsSL https://install.julialang.org | sh -s -- --yes
 JULIAUP=$(which juliaup || echo ~/.juliaup/bin/juliaup)
+JULIA=$(which julia || echo ~/.juliaup/bin/julia)
 DEFAULT_JULIA_VERSION=$("$JULIAUP" status | grep '*' | awk '{ print $3 }')
 echo "Default julia is $DEFAULT_JULIA_VERSION; should be of the format 1.9.3+0.x64.linux.gnu"
+
+
+# add Julia REPL to start menu
+tee ~/.local/share/applications/julia.desktop > /dev/null <<EOF
+[Desktop Entry]
+Name=julia
+Exec=$JULIA
+Comment=Julia REPL
+Terminal=true
+Icon=julia
+Type=Application
+EOF
+chmod +x ~/.local/share/applications/julia.desktop
+
 
 # webapp for julia docs
 # create_webapp.py file:///home/$USER/.julia/juliaup/julia-$DEFAULT_JULIA_VERSION/share/doc/julia/html/en/index.html -n "Julia Documentation" -i /home/$USER/.julia/juliaup/$DEFAULT_JULIA_VERSION/share/doc/julia/html/en/assets/julia.ico -c Development WebApps
