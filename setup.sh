@@ -133,9 +133,9 @@ BACKSPACE="guess"
 EOF
 
 # juliaup and julia packages
-sudo -u $USER curl -fsSL https://install.julialang.org | sudo -u $USER sh -s -- --yes
-JULIAUP=/home/$USER/.juliaup/bin/juliaup
-DEFAULT_JULIA_VERSION=`sudo -u luphord $JULIAUP status | grep '*' | awk '{ print $3 }'`
+which juliaup || curl -fsSL https://install.julialang.org | sh -s -- --yes
+. ~/.bashrc
+DEFAULT_JULIA_VERSION=$(juliaup status | grep '*' | awk '{ print $3 }')
 echo "Default julia is $DEFAULT_JULIA_VERSION; should be of the format 1.9.3+0.x64.linux.gnu"
 
 # webapp for julia docs
