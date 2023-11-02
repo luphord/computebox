@@ -148,17 +148,17 @@ echo "Default julia is $DEFAULT_JULIA_VERSION; should be of the format 1.9.3+0.x
 codium --install-extension julialang.language-julia
 
 # git config
-git config --global user.name "$(GIT_USER)"
-git config --global user.email "$(GIT_EMAIL)"
+git config --global user.name "$GIT_USER"
+git config --global user.email "$GIT_EMAIL"
 
 # alias code=codium
-echo 'alias code=codium' >> /home/$USER/.bashrc
+which code || echo 'alias code=codium' >> ~/.bashrc
 
-# local bin path (required for pipx)
-echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/$USER/.bashrc
+# local bin path for pipx
+pipx ensurepath
 
 # pipx-installable utilities
-pipx install rich-cli
+python3 -m pipx install rich-cli
 
 # cleanup
 sudo apt-get clean && sudo apt-get autoremove
