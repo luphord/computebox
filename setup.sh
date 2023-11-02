@@ -41,7 +41,7 @@ sudo apt-get install -y \
 sudo apt-get upgrade -y
 
 # add "Open in VSCodium" button to nemo file manager
-cat <<EOF > /usr/share/nemo/actions/vscodium.nemo_action
+sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
 [Nemo Action]
 Name=Open in VSCodium
 Comment=Open the current directory in VSCodium
@@ -53,7 +53,7 @@ Extensions=any
 EOF
 
 # add "Open in IPython" button to nemo file manager
-cat <<EOF > /usr/share/nemo/actions/ipython.nemo_action
+sudo tee /usr/share/nemo/actions/ipython.nemo_action > /dev/null <<EOF
 [Nemo Action]
 Name=Open in IPython
 Comment=Open the current directory in IPython
@@ -65,7 +65,7 @@ Extensions=any
 EOF
 
 # add IPython to start menu
-cat <<EOF > /usr/share/applications/ipython.desktop
+sudo tee /usr/share/applications/ipython.desktop > /dev/null <<EOF
 [Desktop Entry]
 Name=ipython
 Exec=ipython3
@@ -74,10 +74,9 @@ Terminal=true
 Icon=ipython
 Type=Application
 EOF
-chmod +x /usr/share/applications/ipython.desktop
 
 # add Julia REPL to start menu
-cat <<EOF > /usr/share/applications/julia.desktop
+sudo tee /usr/share/applications/julia.desktop > /dev/null <<EOF
 [Desktop Entry]
 Name=julia
 Exec=julia
@@ -86,8 +85,6 @@ Terminal=true
 Icon=julia
 Type=Application
 EOF
-chmod +x /usr/share/applications/julia.desktop
-
 
 # Create WebApp script
 mv create_webapp.py /usr/local/bin
