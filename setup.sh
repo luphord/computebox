@@ -3,8 +3,8 @@
 set -eux pipefail
 
 # variables
-GIT_USER=$(USER)
-GIT_EMAIL="$(GIT_USER)@protonmail.com"
+GIT_USER="$USER"
+GIT_EMAIL="$GIT_USER@protonmail.com"
 
 START=$(date +%s)
 
@@ -89,39 +89,30 @@ EOF
 # Create WebApp script
 mv create_webapp.py /usr/local/bin
 
+# Prepare wallpaper
+mkdir -p ~/Pictures/wallpaper
+cp computebox-wallpaper.jpg ~/Pictures/wallpaper
+WALLPAPER="file:///home/$USER/Pictures/wallpaper/computebox-wallpaper.jpg"
+
 # Cinnamon settings
-# gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
-# gsettings set org.cinnamon.desktop.interface gtk-theme "Arc-Dark"
-# gsettings set org.cinnamon.theme name "Arc-Dark"
-cp computebox-wallpaper.jpg /usr/share/backgrounds/
-cd /usr/share/glib-2.0/schemas
-cat << EOF > zz_custom_cinnamon.gschema.override
-[x.dm.slick-greeter]
-theme-name='Arc-Dark'
-icon-theme-name='Papirus-Dark'
+gsettings set org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
+gsettings set org.cinnamon.desktop.interface gtk-theme "Arc-Dark"
+gsettings set org.cinnamon.desktop.wm.preferences theme "Arc-Dark"
 
-[org.gnome.desktop.interface]
-icon-theme = 'Papirus-Dark'
-gtk-theme = 'Arc-Dark'
+gsettings set org.cinnamon.theme name "Arc-Dark"
 
-[org.cinnamon.desktop.interface]
-icon-theme = 'Papirus-Dark'
-gtk-theme = 'Arc-Dark'
+gsettings set org.cinnamon.desktop.background picture-uri "$WALLPAPER"
+gsettings set org.cinnamon.desktop.background picture-options zoom
 
-[org.gnome.desktop.wm.preferences]
-theme = 'Arc-Dark'
 
-[org.cinnamon.desktop.wm.preferences]
-theme = 'Arc-Dark'
+# Gnome settings
+gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+gsettings set org.gnome.desktop.interface gtk-theme "Arc-Dark"
+gsettings set org.gnome.desktop.wm.preferences theme "Arc-Dark"
 
-[org.cinnamon.theme]
-name = 'Arc-Dark'
+gsettings set org.gnome.desktop.background picture-uri "$WALLPAPER"
+gsettings set org.gnome.desktop.background picture-options zoom
 
-[org.cinnamon.desktop.background]
-picture-uri='file:///usr/share/backgrounds/computebox-wallpaper.jpg'
-picture-options='zoom'
-EOF
-glib-compile-schemas .
 # Prepare user home
 echo "Welcome to remastered home!" > /etc/skel/README.md
 
