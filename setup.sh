@@ -163,10 +163,7 @@ echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/$USER/.bashrc
 pipx install rich-cli
 
 # cleanup
-apt-get clean
-rm -r /tmp/*
-rm -r /root/*
-rm -r /var/cache/*
+sudo apt-get clean && sudo apt-get autoremove
 
 # done!
 echo "--- SETUP DONE, took $(echo $(date +%s) - $START | bc) sec ---"
