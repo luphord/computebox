@@ -147,20 +147,20 @@ echo "Default julia is $DEFAULT_JULIA_VERSION; should be of the format 1.9.3+0.x
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
-sudo -u $USER codium --install-extension julialang.language-julia
+codium --install-extension julialang.language-julia
 
 # git config
-sudo -u $USER git config --global user.name "$(GIT_USER)"
-sudo -u $USER git config --global user.email "$(GIT_EMAIL)"
+git config --global user.name "$(GIT_USER)"
+git config --global user.email "$(GIT_EMAIL)"
 
 # alias code=codium
-sudo -u $USER echo 'alias code=codium' >> /home/$USER/.bashrc
+echo 'alias code=codium' >> /home/$USER/.bashrc
 
 # local bin path (required for pipx)
-sudo -u $USER echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/$USER/.bashrc
+echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/$USER/.bashrc
 
 # pipx-installable utilities
-sudo -u $USER pipx install rich-cli
+pipx install rich-cli
 
 # cleanup
 apt-get clean
