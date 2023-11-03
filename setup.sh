@@ -78,8 +78,7 @@ sudo chmod +x /usr/share/applications/ipython.desktop
 sudo cp create_webapp.py /usr/local/bin
 
 # Prepare wallpaper
-mkdir -p ~/Pictures/wallpaper
-cp computebox-wallpaper.jpg ~/Pictures/wallpaper
+cp -r wallpaper ~/Pictures
 # WALLPAPER="file:///home/$USER/Pictures/wallpaper/computebox-wallpaper.jpg"
 
 # Cinnamon settings
