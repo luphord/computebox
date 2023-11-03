@@ -80,7 +80,7 @@ sudo cp create_webapp.py /usr/local/bin
 # Prepare wallpaper
 mkdir -p ~/Pictures/wallpaper
 cp computebox-wallpaper.jpg ~/Pictures/wallpaper
-WALLPAPER="file:///home/$USER/Pictures/wallpaper/computebox-wallpaper.jpg"
+# WALLPAPER="file:///home/$USER/Pictures/wallpaper/computebox-wallpaper.jpg"
 
 # Cinnamon settings
 gsettings set org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
@@ -89,8 +89,8 @@ gsettings set org.cinnamon.desktop.wm.preferences theme "Arc-Dark"
 
 gsettings set org.cinnamon.theme name "Arc-Dark"
 
-gsettings set org.cinnamon.desktop.background picture-uri "$WALLPAPER"
-gsettings set org.cinnamon.desktop.background picture-options zoom
+# gsettings set org.cinnamon.desktop.background picture-uri "$WALLPAPER"
+# gsettings set org.cinnamon.desktop.background picture-options zoom
 
 
 # Gnome settings
@@ -98,8 +98,8 @@ gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
 gsettings set org.gnome.desktop.interface gtk-theme "Arc-Dark"
 gsettings set org.gnome.desktop.wm.preferences theme "Arc-Dark"
 
-gsettings set org.gnome.desktop.background picture-uri "$WALLPAPER"
-gsettings set org.gnome.desktop.background picture-options zoom
+# gsettings set org.gnome.desktop.background picture-uri "$WALLPAPER"
+# gsettings set org.gnome.desktop.background picture-options zoom
 
 # Prepare user home
 sudo tee /etc/skel/README.md > /dev/null <<EOF
