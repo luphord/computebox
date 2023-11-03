@@ -4,7 +4,6 @@ MX Linux ISO for scientific computing purposes
 ## ToDo
 
 - [x] Add "Open in VSCodium" button to nemo context menu
-- [ ] Improve wallpaper
 - [ ] .NET
 - [ ] .NET VSCodium extensions
 - [ ] WebApp for .NET documentation
@@ -24,14 +23,6 @@ MX Linux ISO for scientific computing purposes
 - [ ] lazygit git tui
 - [ ] lazydocker docker tui
 - [ ] harlequin DuckDB tui
-
-## Secondary ToDo
-
-- [ ] Firefox search engine, cookies, privacy settings
-- [ ] Suppress VSCodium initial setup
-- [x] Add and configure custom desktop background
-- [ ] Change mouse cursor
-- [ ] Add workspace switcher
-- [ ] Change start menu icon
-- [ ] Set Julia VSCodium extension data collection setting
 - [ ] juliamono font
+- [x] zellij terminal multiplexer
+- [ ] Add script for cloning / pulling all repos of a GitHub user
