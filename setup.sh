@@ -39,6 +39,10 @@ sudo apt-get install -y \
 # perform upgrade of packages contained before remastering
 sudo apt-get upgrade -y
 
+# install zelij
+which zellij \
+    || curl --location "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz" | sudo tar -C /usr/local/bin -xz
+
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
 [Nemo Action]
