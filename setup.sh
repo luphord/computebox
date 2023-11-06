@@ -44,8 +44,10 @@ which zellij \
     || curl --location "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz" | sudo tar -C /usr/local/bin -xz
 
 # install helix
-which hx \
-    || curl --location "https://github.com/helix-editor/helix/releases/download/23.10/helix-23.10-x86_64-linux.tar.xz" | sudo tar --xz -C /usr/local/bin -x --strip 1 helix-23.10-x86_64-linux/hx
+HELIX_VERSION=helix-23.10-x86_64-linux
+which hx || \
+    { curl --location "https://github.com/helix-editor/helix/releases/download/23.10/$HELIX_VERSION.tar.xz" | sudo tar --xz -C /opt -x \
+      && sudo ln -s "/opt/$HELIX_VERSION/hx" /usr/local/bin; }
 
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
