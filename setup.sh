@@ -15,10 +15,10 @@ sudo apt-get update
 sudo apt-get install -y curl dirmngr ca-certificates software-properties-common apt-transport-https -y
 
 # VSCodium PPA
-apt-get install codium -s >> /dev/null \
-	|| curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscodium.gpg > /dev/null \
-	&& echo deb [signed-by=/usr/share/keyrings/vscodium.gpg] https://download.vscodium.com/debs vscodium main | sudo tee /etc/apt/sources.list.d/vscodium.list \
-    && sudo apt-get update
+apt-get install codium -s >> /dev/null || \
+	{ curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscodium.gpg > /dev/null \
+	  && echo deb [signed-by=/usr/share/keyrings/vscodium.gpg] https://download.vscodium.com/debs vscodium main | sudo tee /etc/apt/sources.list.d/vscodium.list \
+      && sudo apt-get update; }
 
 # install packages
 sudo apt-get install -y \
