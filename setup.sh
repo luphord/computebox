@@ -33,7 +33,7 @@ sudo apt-get install -y \
     virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose \
     screenkey redshift \
     firefox keepass2 \
-    arc-theme papirus-icon-theme cinnamon-desktop-environment \
+    arc-theme papirus-icon-theme fonts-powerline cinnamon-desktop-environment \
     gnome-system-monitor gnome-terminal alacritty
 
 # perform upgrade of packages contained before remastering
