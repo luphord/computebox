@@ -22,7 +22,7 @@ apt-get install codium -s >> /dev/null || \
 
 # install packages
 sudo apt-get install -y \
-    micro xsel xdotool tmux fzf tldr tree htop btop nvtop neofetch \
+    micro xsel xdotool tmux fzf tldr nnn tree lsd ncdu trash-cli htop btop nvtop ddgr pastebinit qrencode neofetch cmatrix \
     git fossil mercurial subversion \
     python3 python3-setuptools python3-pip python3-venv python3-tk python3-pil python3-pil.imagetk python3-doit pipx \
     python3-mypy python3-mypy-extensions black \
