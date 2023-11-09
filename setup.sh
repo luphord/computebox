@@ -34,7 +34,7 @@ sudo apt-get install -y \
     screenkey redshift \
     firefox keepass2 \
     arc-theme papirus-icon-theme fonts-powerline cinnamon-desktop-environment \
-    gnome-system-monitor gnome-terminal alacritty
+    gnome-system-monitor gnome-font-viewer gnome-terminal alacritty
 
 # perform upgrade of packages contained before remastering
 sudo apt-get upgrade -y
