@@ -52,9 +52,7 @@ which hx || \
 # install lazygit
 which lazygit || \
     { LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') \
-      && curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" \
-      && tar xf lazygit.tar.gz lazygit \
-      && sudo install lazygit /usr/local/bin; }
+      && curl --location "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"  | sudo tar -C /usr/local/bin -xz; }
 
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
