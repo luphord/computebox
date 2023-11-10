@@ -20,7 +20,7 @@ MX Linux ISO for scientific computing purposes
 - [x] Add start menu entry for julia repl
 - [x] WebApp for Julia documentation
 - [x] Fix Julia documentation index/icon paths s.t. they don't break with new Julia versions
-- [ ] lazygit git tui
+- [x] lazygit git tui
 - [ ] lazydocker docker tui
 - [ ] harlequin DuckDB tui
 - [ ] juliamono font
