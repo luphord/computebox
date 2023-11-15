@@ -39,6 +39,15 @@ sudo apt-get install -y \
 # perform upgrade of packages contained before remastering
 sudo apt-get upgrade -y
 
+# install wezterm
+WEZTERM_VERSION="20230712-072601-f4abf8fd"
+WEZTERM="WezTerm-$WEZTERM_VERSION-Ubuntu20.04.AppImage"
+which wezterm || \
+    { curl -LO "https://github.com/wez/wezterm/releases/download/$WEZTERM_VERSION/$WEZTERM" \
+      && chmod +x "$WEZTERM" \
+      && sudo mv "$WEZTERM" /opt \
+      && sudo ln -s "/opt/$WEZTERM" /usr/local/bin/wezterm; }
+
 # install zelij
 which zellij \
     || curl --location "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz" | sudo tar -C /usr/local/bin -xz
