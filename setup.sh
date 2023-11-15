@@ -39,6 +39,9 @@ sudo apt-get install -y \
 # perform upgrade of packages contained before remastering
 sudo apt-get upgrade -y
 
+# add user to docker group
+sudo usermod -aG docker $USER
+
 # install wezterm
 WEZTERM_VERSION="20230712-072601-f4abf8fd"
 WEZTERM="WezTerm-$WEZTERM_VERSION-Ubuntu20.04.AppImage"
