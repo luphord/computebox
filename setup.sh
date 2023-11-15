@@ -63,6 +63,9 @@ which lazygit || \
     { LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') \
       && curl --location "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"  | sudo tar -C /usr/local/bin -xz; }
 
+# install lazydocker
+which lazydocker || curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
 [Nemo Action]

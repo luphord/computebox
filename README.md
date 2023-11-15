@@ -21,7 +21,7 @@ MX Linux ISO for scientific computing purposes
 - [x] WebApp for Julia documentation
 - [x] Fix Julia documentation index/icon paths s.t. they don't break with new Julia versions
 - [x] lazygit git tui
-- [ ] lazydocker docker tui
+- [x] lazydocker docker tui
 - [ ] harlequin DuckDB tui
 - [ ] juliamono font
 - [x] zellij terminal multiplexer
