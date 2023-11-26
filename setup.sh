@@ -29,7 +29,7 @@ sudo apt-get install -y \
     jupyter jupyter-qtconsole python3-jupyterlab-server python3-ipywidgets ipython3 python3-numpy python3-matplotlib-inline python3-matplotlib python3-scipy python3-pandas quantlib-python \
     python3-doc python3-numpydoc \
     sbcl slime chezscheme tcc valac \
-    sqlitebrowser meld glade codium spyder geany \
+    sqlitebrowser meld glade codium spyder geany pspp \
     virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose \
     screenkey impressive redshift \
     firefox keepass2 \
