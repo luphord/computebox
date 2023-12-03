@@ -3,8 +3,16 @@
 import doit
 from doit.tools import timeout
 import datetime
+import subprocess
 
 DOIT_CONFIG = {"default_tasks": ["upgrade_packages"], "verbosity": 2}
+
+
+def is_command_available(cmd):
+    """Check if cmd is available as a command to the shell."""
+    return (
+        subprocess.run(f"which {cmd}", capture_output=True, shell=True).returncode == 0
+    )
 
 
 def task_update_package_index():
