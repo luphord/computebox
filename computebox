@@ -4,7 +4,7 @@ import doit
 from doit.tools import timeout
 import datetime
 
-DOIT_CONFIG = {"default_tasks": ["update_package_index"], "verbosity": 2}
+DOIT_CONFIG = {"default_tasks": ["upgrade_packages"], "verbosity": 2}
 
 
 def task_update_package_index():
@@ -12,6 +12,14 @@ def task_update_package_index():
     return {
         "actions": ["sudo apt-get update"],
         "uptodate": [timeout(datetime.timedelta(minutes=10))],
+    }
+
+
+def task_upgrade_packages():
+    """Upgrade installed packages using apt-get full-upgrade."""
+    return {
+        "actions": ["sudo apt-get full-upgrade -y"],
+        "task_dep": ["update_package_index"],
     }
 
 
