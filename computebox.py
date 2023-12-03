@@ -1,5 +1,6 @@
 #! /usr/bin/doit -f
 
 
-def task_first():
-    return {"actions": ["echo Hello World"]}
+def task_update_package_index():
+    """Update local package index using apt-get update."""
+    return {"actions": ["sudo apt-get update"]}
