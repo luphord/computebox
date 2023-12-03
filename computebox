@@ -1,11 +1,16 @@
 #! /usr/bin/env python3
 
 import doit
+from doit.tools import timeout
+import datetime
 
 
 def task_update_package_index():
     """Update local package index using apt-get update."""
-    return {"actions": ["sudo apt-get update"]}
+    return {
+        "actions": ["sudo apt-get update"],
+        "uptodate": [timeout(datetime.timedelta(minutes=10))],
+    }
 
 
 if __name__ == "__main__":
