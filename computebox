@@ -4,6 +4,8 @@ import doit
 from doit.tools import timeout
 import datetime
 
+DOIT_CONFIG = {"default_tasks": ["update_package_index"], "verbosity": 2}
+
 
 def task_update_package_index():
     """Update local package index using apt-get update."""
