@@ -42,5 +42,146 @@ def task_upgrade():
     }
 
 
+def task_install_terminal_tools():
+    """Install various utilities for commandline or TUI use."""
+    return install_packages_task(
+        "micro",
+        "xsel",
+        "xdotool",
+        "tmux",
+        "fzf",
+        "tldr",
+        "nnn",
+        "tree",
+        "lsd",
+        "ncdu",
+        "trash-cli",
+        "htop",
+        "btop",
+        "nvtop",
+        "ddgr",
+        "pastebinit",
+        "qrencode",
+        "timg",
+        "neofetch",
+        "cmatrix",
+        "git",
+        "fossil",
+        "mercurial",
+        "subversion",
+        "python3",
+        "python3-setuptools",
+        "python3-pip",
+        "python3-venv",
+        "python3-pil",
+        "python3-doit",
+        "pipx",
+        "python3-mypy",
+        "python3-mypy-extensions",
+        "black",
+        "ipython3",
+    )
+
+
+def task_install_programming_languages():
+    """Install programming languages, i.e. compilers and interpreters."""
+    return install_packages_task("sbcl", "slime", "chezscheme", "tcc", "valac")
+
+
+def task_install_scientific_python():
+    """Install various packages from the Python scientific computing ecosystem."""
+    return install_packages_task(
+        "jupyter",
+        "python3-jupyterlab-server",
+        "python3-ipywidgets",
+        "python3-numpy",
+        "python3-matplotlib-inline",
+        "python3-matplotlib",
+        "python3-scipy",
+        "python3-pandas",
+        "quantlib-python",
+        "python3-doc",
+        "python3-numpydoc",
+    )
+
+
+def task_install_virtualization():
+    """Install virtualization packages for qemu/KVM."""
+    return install_packages_task(
+        "virt-manager", "qemu-kvm", "qemu-utils", "qemu-block-extra"
+    )
+
+
+def task_install_containerization():
+    """Install packages for docker."""
+    return install_packages_task("docker.io", "docker-compose")
+
+
+def task_install_terminal_emulators():
+    """Install various terminal emulators."""
+    return install_packages_task("gnome-terminal", "alacritty", "kitty")
+
+
+def task_install_gui_tools():
+    """Install various GUI applications."""
+    return install_packages_task(
+        "sqlitebrowser",
+        "meld",
+        "glade",
+        "codium",
+        "spyder",
+        "geany",
+        "pspp",
+        "screenkey",
+        "impressive",
+        "redshift",
+        "firefox",
+        "keepass2",
+        "python3-tk",
+        "python3-pil.imagetk",
+        "jupyter-qtconsole",
+    )
+
+
+def task_install_appearance():
+    """Install themes and fonts."""
+    return install_packages_task("arc-theme", "papirus-icon-theme", "fonts-powerline")
+
+
+def task_install_cinnamon():
+    """Install cinnamon desktop and associated tools."""
+    return install_packages_task(
+        "cinnamon-desktop-environment", "gnome-system-monitor", "gnome-font-viewer"
+    )
+
+
+def task_install_headless():
+    """Install all packages useful in a headless environment without GUI."""
+    return {
+        "actions": [],
+        "task_dep": [
+            "install_terminal_tools",
+            "install_scientific_python",
+            "install_programming_languages",
+            "install_virtualization",
+            "install_containerization",
+        ],
+    }
+
+
+def task_install_all():
+    """Install all packages."""
+    return {
+        "actions": [],
+        "task_dep": [
+            "install_headless",
+            "install_terminal_emulators",
+            "install_gui_tools",
+            "install_appearance",
+            "install_cinnamon",
+        ],
+    }
+
+
 if __name__ == "__main__":
     doit.run(globals())
