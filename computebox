@@ -15,6 +15,17 @@ def is_command_available(cmd):
     )
 
 
+def install_packages_task(*packages):
+    """
+    Create a task to install all packages passed as arguments
+    via apt-get install.
+    """
+    return {
+        "actions": [f"sudo apt-get install -y {' '.join(packages)}"],
+        "task_dep": ["update"],
+    }
+
+
 def task_update():
     """Update local package index using apt-get update."""
     return {
