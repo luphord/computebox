@@ -5,7 +5,7 @@ from doit.tools import timeout
 import datetime
 import subprocess
 
-DOIT_CONFIG = {"default_tasks": ["upgrade_packages"], "verbosity": 2}
+DOIT_CONFIG = {"default_tasks": ["upgrade"], "verbosity": 2}
 
 
 def is_command_available(cmd):
@@ -15,7 +15,7 @@ def is_command_available(cmd):
     )
 
 
-def task_update_package_index():
+def task_update():
     """Update local package index using apt-get update."""
     return {
         "actions": ["sudo apt-get update"],
@@ -23,11 +23,11 @@ def task_update_package_index():
     }
 
 
-def task_upgrade_packages():
+def task_upgrade():
     """Upgrade installed packages using apt-get full-upgrade."""
     return {
         "actions": ["sudo apt-get full-upgrade -y"],
-        "task_dep": ["update_package_index"],
+        "task_dep": ["update"],
     }
 
 
