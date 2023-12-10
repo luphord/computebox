@@ -8,6 +8,27 @@ import subprocess
 DOIT_CONFIG = {"default_tasks": ["upgrade"], "verbosity": 2}
 
 
+class PlainCommand:
+    """Creator for a plain CLI command with options and arguments."""
+
+    def __init__(self, command):
+        self.command = str(command)
+
+    def _parts(self, *arguments, **options):
+        yield self.command
+        for option, value in options.items():
+            yield f"--{option}={value}"
+        for argument in arguments:
+            yield str(argument)
+
+    def __call__(self, *arguments, **options):
+        """Create string representation for this command with options and arguments."""
+        return " ".join(self._parts(*arguments, **options))
+
+
+wget = PlainCommand("wget")
+
+
 def is_command_available(cmd):
     """Check if cmd is available as a command to the shell."""
     return (
