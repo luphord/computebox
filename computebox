@@ -7,15 +7,20 @@ import subprocess
 
 DOIT_CONFIG = {"default_tasks": ["upgrade"], "verbosity": 2}
 VENTOY_VERSION = "1.0.96"
+VENTOY_ARCHIVE = "/tmp/ventoy.tar.gz"
+VENTOY_INSTALL_PATH = "/opt/ventoy"
 
 
 class PlainCommand:
     """Creator for a plain CLI command with options and arguments."""
 
-    def __init__(self, command):
+    def __init__(self, command: str, as_superuser: bool = False):
         self.command = str(command)
+        self.as_superuser = as_superuser
 
     def _parts(self, *arguments, **options):
+        if self.as_superuser:
+            yield "sudo"
         yield self.command
         for option, value in options.items():
             yield f"--{option}={value}"
@@ -27,7 +32,15 @@ class PlainCommand:
         return " ".join(self._parts(*arguments, **options))
 
 
+def sudo(command: PlainCommand):
+    """Run command with sudo."""
+    return PlainCommand(command.command, as_superuser=True)
+
+
 wget = PlainCommand("wget")
+tar = PlainCommand("tar")
+mkdir = PlainCommand("rm")
+mkdir = PlainCommand("mkdir")
 
 
 def is_command_available(cmd):
@@ -39,15 +52,14 @@ def is_command_available(cmd):
 
 def task_download_ventoy():
     """Download ventoy multiboot USB creator."""
-    ventoy_archive = "/tmp/ventoy.tar.gz"
     return {
         "actions": [
             wget(
                 f"https://github.com/ventoy/Ventoy/releases/download/v{VENTOY_VERSION}/ventoy-{VENTOY_VERSION}-linux.tar.gz",
-                **{"output-document": ventoy_archive},
+                **{"output-document": VENTOY_ARCHIVE},
             )
         ],
-        "targets": [ventoy_archive],
+        "targets": [VENTOY_ARCHIVE],
         "uptodate": [run_once],
     }
 
