@@ -4,6 +4,7 @@ import doit
 from doit.tools import timeout, run_once
 import datetime
 import subprocess
+from pathlib import Path
 
 DOIT_CONFIG = {"default_tasks": ["upgrade"], "verbosity": 2}
 VENTOY_VERSION = "1.0.96"
@@ -39,7 +40,8 @@ def sudo(command: PlainCommand):
 
 wget = PlainCommand("wget")
 tar = PlainCommand("tar")
-mkdir = PlainCommand("rm")
+rm = PlainCommand("rm")
+mv = PlainCommand("mv")
 mkdir = PlainCommand("mkdir")
 
 
@@ -61,6 +63,26 @@ def task_download_ventoy():
         ],
         "targets": [VENTOY_ARCHIVE],
         "uptodate": [run_once],
+    }
+
+
+def task_extract_ventoy():
+    """Extract downloaded ventoy archive."""
+    versioned_dir = Path(VENTOY_INSTALL_PATH) / f"ventoy-{VENTOY_VERSION}"
+    return {
+        "actions": [
+            sudo(rm)("-rf", VENTOY_INSTALL_PATH),
+            sudo(mkdir)("-p", VENTOY_INSTALL_PATH),
+            sudo(tar)(
+                "-xf",
+                VENTOY_ARCHIVE,
+                directory=VENTOY_INSTALL_PATH,
+            ),
+            sudo(mv)(versioned_dir / "*", VENTOY_INSTALL_PATH),
+            sudo(rm)("-r", versioned_dir),
+        ],
+        "targets": [VENTOY_INSTALL_PATH],
+        "file_dep": [VENTOY_ARCHIVE],
     }
 
 
