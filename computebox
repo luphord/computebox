@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import doit
-from doit.tools import timeout
+from doit.tools import timeout, run_once
 import datetime
 import subprocess
 
@@ -48,6 +48,7 @@ def task_download_ventoy():
             )
         ],
         "targets": [ventoy_archive],
+        "uptodate": [run_once],
     }
 
 
