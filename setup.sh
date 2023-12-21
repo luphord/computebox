@@ -197,7 +197,7 @@ python3 -m pipx install rich-cli
 python3 -m pipx install euporie
 
 # cleanup
-sudo apt-get clean && sudo apt-get autoremove
+sudo apt-get clean && sudo apt-get autoremove -y
 
 # done!
 echo "--- SETUP DONE, took $(echo $(date +%s) - $START | bc) sec ---"
