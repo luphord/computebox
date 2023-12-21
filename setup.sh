@@ -192,7 +192,7 @@ git config --global user.name "$GIT_USER"
 git config --global user.email "$GIT_EMAIL"
 
 # alias code=codium
-which code || echo 'alias code=codium' >> ~/.bashrc
+code -v || echo 'alias code=codium' >> ~/.bashrc
 
 # local bin path for pipx
 pipx ensurepath
