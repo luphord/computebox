@@ -42,6 +42,9 @@ sudo apt-get upgrade -y
 # add user to docker group
 sudo usermod -aG docker $USER
 
+# install nix package manager
+nix doctor || sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
 # install wezterm
 WEZTERM_VERSION="20230712-072601-f4abf8fd"
 WEZTERM="WezTerm-$WEZTERM_VERSION-Ubuntu20.04.AppImage"
