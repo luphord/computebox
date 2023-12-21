@@ -14,13 +14,7 @@ sudo apt-get update
 # install base packages required for adding PPAs
 sudo apt-get install -y curl dirmngr ca-certificates software-properties-common apt-transport-https -y
 
-# VSCodium PPA
-apt-get install codium -s >> /dev/null || \
-	{ curl -fsSL https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/vscodium.gpg > /dev/null \
-	  && echo deb [signed-by=/usr/share/keyrings/vscodium.gpg] https://download.vscodium.com/debs vscodium main | sudo tee /etc/apt/sources.list.d/vscodium.list \
-      && sudo apt-get update; }
-
-# install packages
+# install debian packages
 sudo apt-get install -y \
     micro xsel xdotool tmux fzf tldr nnn tree lsd ncdu trash-cli htop btop nvtop ddgr pastebinit qrencode timg neofetch cmatrix \
     git fossil mercurial subversion \
@@ -29,7 +23,7 @@ sudo apt-get install -y \
     jupyter jupyter-qtconsole python3-jupyterlab-server python3-ipywidgets ipython3 python3-numpy python3-matplotlib-inline python3-matplotlib python3-scipy python3-pandas quantlib-python \
     python3-doc python3-numpydoc \
     sbcl slime chezscheme tcc valac \
-    sqlitebrowser meld glade codium spyder geany pspp \
+    sqlitebrowser meld glade spyder geany pspp \
     virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose \
     screenkey impressive redshift \
     firefox keepass2 \
@@ -47,32 +41,14 @@ which nix || sh <(curl -L https://nixos.org/nix/install) --no-daemon
 which nix || echo '. ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.bashrc
 which nix || . ~/.nix-profile/etc/profile.d/nix.sh
 
-# install wezterm
-WEZTERM_VERSION="20230712-072601-f4abf8fd"
-WEZTERM="WezTerm-$WEZTERM_VERSION-Ubuntu20.04.AppImage"
-which wezterm || \
-    { curl -LO "https://github.com/wez/wezterm/releases/download/$WEZTERM_VERSION/$WEZTERM" \
-      && chmod +x "$WEZTERM" \
-      && sudo mv "$WEZTERM" /opt \
-      && sudo ln -s "/opt/$WEZTERM" /usr/local/bin/wezterm; }
-
-# install zelij
-which zellij \
-    || curl --location "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz" | sudo tar -C /usr/local/bin -xz
-
-# install helix
-HELIX_VERSION=helix-23.10-x86_64-linux
-which hx || \
-    { curl --location "https://github.com/helix-editor/helix/releases/download/23.10/$HELIX_VERSION.tar.xz" | sudo tar --xz -C /opt -x \
-      && sudo ln -s "/opt/$HELIX_VERSION/hx" /usr/local/bin; }
-
-# install lazygit
-which lazygit || \
-    { LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') \
-      && curl --location "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"  | sudo tar -C /usr/local/bin -xz; }
-
-# install lazydocker
-which lazydocker || curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+# install nix packages
+nix-env -iA \
+  nixpkgs.wezterm \
+  nixpkgs.zellij \
+  nixpkgs.helix \
+  nixpkgs.lazygit \
+  nixpkgs.lazydocker \
+  nixpkgs.vscodium
 
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
