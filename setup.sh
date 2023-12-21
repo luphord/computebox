@@ -43,7 +43,9 @@ sudo apt-get upgrade -y
 sudo usermod -aG docker $USER
 
 # install nix package manager
-nix doctor || sh <(curl -L https://nixos.org/nix/install) --no-daemon
+which nix || sh <(curl -L https://nixos.org/nix/install) --no-daemon
+which nix || echo '. ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.bashrc
+which nix || . ~/.nix-profile/etc/profile.d/nix.sh
 
 # install wezterm
 WEZTERM_VERSION="20230712-072601-f4abf8fd"
