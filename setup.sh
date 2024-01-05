@@ -31,7 +31,7 @@ sudo apt-get install -y \
     gnome-system-monitor gnome-font-viewer gnome-terminal alacritty kitty
 
 # perform upgrade of packages contained before remastering
-sudo apt-get full-upgrade -y
+sudo apt-get upgrade -y
 
 # add user to docker group
 sudo usermod -aG docker $USER
