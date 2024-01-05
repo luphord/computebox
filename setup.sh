@@ -180,6 +180,7 @@ python3 -m pipx install euporie
 
 # cleanup
 sudo apt-get clean && sudo apt-get autoremove -y
+nix-collect-garbage -d
 
 # done!
 echo "--- SETUP DONE, took $(echo $(date +%s) - $START | bc) sec ---"
