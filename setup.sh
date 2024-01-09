@@ -163,7 +163,10 @@ chmod +x ~/.local/share/applications/julia.desktop
 # VSCodium extensions
 # from https://github.com/Microsoft/vscode/issues/56614#issuecomment-754839933
 # codium --extensions-dir /usr/share/codium/resources/app/extensions --install-extension julialang.language-julia
-codium --install-extension julialang.language-julia
+codium \
+  --install-extension julialang.language-julia \
+  --install-extension muhammad-sammy.csharp \
+  --install-extension Ionide.Ionide-fsharp 
 
 # git config
 git config --global user.name "$GIT_USER"
