@@ -25,7 +25,7 @@ sudo apt-get install -y \
     sbcl slime chezscheme tcc valac \
     sqlitebrowser meld glade spyder geany pspp \
     virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose \
-    screenkey impressive redshift \
+    screenkey impressive redshift dex \
     firefox keepass2 \
     arc-theme papirus-icon-theme fonts-powerline cinnamon-desktop-environment \
     gnome-system-monitor gnome-font-viewer gnome-terminal alacritty kitty
