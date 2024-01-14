@@ -32,6 +32,9 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 alt = "mod1"
 terminal = guess_terminal()
+rofi = (
+    "rofi -modi 'run,drun' -show-icons -theme Arc-Dark -icon-theme Papirus -show drun"
+)
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -88,9 +91,7 @@ keys = [
     Key(
         [mod, "shift"],
         "Return",
-        lazy.spawn(
-            "rofi -modi 'run,drun' -show-icons -theme Arc-Dark -icon-theme Papirus -show drun"
-        ),
+        lazy.spawn(rofi),
         desc="Launch rofi",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
@@ -113,7 +114,7 @@ keys = [
     ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn(rofi), desc="Spawn a command using a prompt widget"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -162,8 +163,8 @@ layouts = [
 
 widget_defaults = dict(
     font="sans",
-    fontsize=12,
-    padding=3,
+    fontsize=16,
+    padding=8,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -181,7 +182,7 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
+                widget.TextBox("computebox", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
@@ -189,9 +190,9 @@ screens = [
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            32,
+            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            border_color=["333333", "000000", "333333", "000000"],
         ),
         wallpaper="/usr/share/wallpapers/emerald_wallpaper/contents/images/1920x1200.svg",
         # wallpaper="/usr/share/wallpapers/homeworld/contents/images/1920x1200.svg",
