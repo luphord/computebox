@@ -191,7 +191,7 @@ sudo tee /usr/share/xsessions/qtile.desktop > /dev/null <<EOF
 [Desktop Entry]
 Name=Qtile
 Comment=Qtile Session
-Exec=~/.local/bin/qtile start
+Exec=/home/$USER/.local/bin/qtile start
 Type=Application
 Keywords=wm;tiling
 EOF
