@@ -186,6 +186,17 @@ python3 -m pipx install rich-cli
 python3 -m pipx install euporie
 python3 -m pipx install qtile
 
+# Add Qtile session
+sudo tee /usr/share/xsessions/qtile.desktop > /dev/null <<EOF
+[Desktop Entry]
+Name=Qtile
+Comment=Qtile Session
+Exec=~/.local/bin/qtile start
+Type=Application
+Keywords=wm;tiling
+EOF
+sudo chmod +x /usr/share/xsessions/qtile.desktop
+
 # cleanup
 sudo apt-get clean && sudo apt-get autoremove -y
 nix-collect-garbage -d
