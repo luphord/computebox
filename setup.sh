@@ -197,6 +197,9 @@ Keywords=wm;tiling
 EOF
 sudo chmod +x /usr/share/xsessions/qtile.desktop
 
+# Link Qtile configuration folder
+ln -sf "$(pwd)/qtile/" ~/.config
+
 # cleanup
 sudo apt-get clean && sudo apt-get autoremove -y
 nix-collect-garbage -d
