@@ -39,12 +39,22 @@ def task_computebox_info():
 
 
 def task_clone():
-    """Clone all repos from github"""
+    """Clone all repos from Github."""
     return {
         "actions": [
             f"cd {REPOS_BASE_PATH} && test -d {repo.name} || git clone {repo.clone_url}"
             for repo in _get_repo_list()
         ]
+    }
+
+
+def task_pull():
+    """Pull all repos from Github."""
+    return {
+        "actions": [
+            f"cd {repo_path} && git pull" for repo_path in REPOS_BASE_PATH.iterdir()
+        ],
+        "task_dep": ["clone"],
     }
 
 
