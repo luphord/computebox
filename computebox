@@ -6,9 +6,17 @@ import subprocess
 import json
 import urllib.request
 from pathlib import Path
+from dataclasses import dataclass
 
 DOIT_CONFIG = {"default_tasks": ["computebox_info"], "verbosity": 2}
 GIT_USER = "luphord"
+REPOS_BASE_PATH = Path.home() / "repos"
+
+
+@dataclass
+class RepoInfo:
+    name: Path
+    clone_url: Path
 
 
 def _get_repo_list():
@@ -17,7 +25,7 @@ def _get_repo_list():
         repos = json.loads((f.read().decode("utf-8")))
         for repo in repos:
             if not repo["fork"]:
-                yield repo["clone_url"]
+                yield RepoInfo(name=repo["name"], clone_url=repo["clone_url"])
 
 
 def _print_computebox_info():
@@ -28,6 +36,16 @@ def _print_computebox_info():
 def task_computebox_info():
     """Print infos about this computebox install"""
     return {"actions": [_print_computebox_info]}
+
+
+def task_clone():
+    """Clone all repos from github"""
+    return {
+        "actions": [
+            f"cd {REPOS_BASE_PATH} && test -d {repo.name} || git clone {repo.clone_url}"
+            for repo in _get_repo_list()
+        ]
+    }
 
 
 if __name__ == "__main__":
