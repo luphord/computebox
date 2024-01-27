@@ -3,20 +3,32 @@
 import doit
 from pprint import pprint as print
 import subprocess
+import json
+import urllib.request
 from pathlib import Path
 
 DOIT_CONFIG = {"default_tasks": ["computebox_info"], "verbosity": 2}
+GIT_USER = "luphord"
+
+
+def _get_repo_list():
+    """Retrieve repo list from Github API."""
+    with urllib.request.urlopen(f"https://api.github.com/users/{GIT_USER}/repos") as f:
+        repos = json.loads((f.read().decode("utf-8")))
+        for repo in repos:
+            if not repo["fork"]:
+                yield repo["clone_url"]
+
 
 def _print_computebox_info():
-    print({
-        "computebox script": Path(__file__)
-    })
+    print({"computebox script": Path(__file__)})
+    print({"repos": list(_get_repo_list())})
+
 
 def task_computebox_info():
     """Print infos about this computebox install"""
-    return {
-        "actions": [_print_computebox_info]
-    }
+    return {"actions": [_print_computebox_info]}
+
 
 if __name__ == "__main__":
     doit.run(globals())
