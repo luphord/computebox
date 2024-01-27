@@ -176,7 +176,8 @@ git config --global user.email "$GIT_EMAIL"
 code -v || echo 'alias code=codium' >> ~/.bashrc
 
 # add desktop starters for nix-installed applications
-grep ".nix-profile/share" ~/.profile || echo 'export XDG_DATA_DIRS="$HOME/.nix-profile/share:${XDG_DATA_DIRS}"' >> ~/.profile
+grep ".nix-profile/share" ~/.xsessionrc || echo 'export XDG_DATA_DIRS="$HOME/.nix-profile/share:${XDG_DATA_DIRS}"' >> ~/.xsessionrc
+grep ".nix-profile/bin" ~/.xsessionrc || echo 'export PATH="$HOME/.nix-profile/bin:${PATH}"' >> ~/.xsessionrc
 
 # local bin path for pipx
 pipx ensurepath
