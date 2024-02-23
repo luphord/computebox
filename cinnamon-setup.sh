@@ -4,7 +4,7 @@ set -eux pipefail
 
 sudo apt-get install -y \
     arc-theme papirus-icon-theme fonts-powerline cinnamon-desktop-environment \
-    gnome-system-monitor gnome-font-viewer gnome-terminal \
+    gnome-system-monitor gnome-disk-utility gnome-font-viewer gnome-terminal \
 
 # Cinnamon settings
 gsettings set org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
