@@ -49,7 +49,8 @@ nix-env -iA \
   nixpkgs.lazydocker \
   nixpkgs.vscodium \
   nixpkgs.ventoy-full \
-  nixpkgs.dotnet-sdk_8
+  nixpkgs.dotnet-sdk_8 \
+  nixpkgs.deno
 
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
