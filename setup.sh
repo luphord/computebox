@@ -154,7 +154,8 @@ codium \
   --install-extension julialang.language-julia \
   --install-extension muhammad-sammy.csharp \
   --install-extension Ionide.Ionide-fsharp \
-  --install-extension grain-lang.vscode-grain
+  --install-extension grain-lang.vscode-grain \
+  --install-extension gengjiawen.vscode-wasm
 
 # git config
 git config --global user.name "$GIT_USER"
