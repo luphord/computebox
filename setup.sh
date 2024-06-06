@@ -53,6 +53,11 @@ nix-env -iA \
   nixpkgs.dotnet-sdk_8 \
   nixpkgs.deno
 
+# install grain language (of which there is no nix package as of 2024-06-06)
+which grain || sudo curl -L --output /usr/local/bin/grain \
+  https://github.com/grain-lang/grain/releases/download/grain-v0.6.3/grain-linux-x64
+sudo chmod +x /usr/local/bin/grain
+
 # add "Open in VSCodium" button to nemo file manager
 sudo tee /usr/share/nemo/actions/vscodium.nemo_action > /dev/null <<EOF
 [Nemo Action]
@@ -148,7 +153,8 @@ chmod +x ~/.local/share/applications/julia.desktop
 codium \
   --install-extension julialang.language-julia \
   --install-extension muhammad-sammy.csharp \
-  --install-extension Ionide.Ionide-fsharp 
+  --install-extension Ionide.Ionide-fsharp \
+  --install-extension grain-lang.vscode-grain
 
 # git config
 git config --global user.name "$GIT_USER"
