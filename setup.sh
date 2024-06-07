@@ -53,7 +53,8 @@ nix-env -iA \
   nixpkgs.dotnet-sdk_8 \
   nixpkgs.deno \
   nixpkgs.wasmtime \
-  nixpkgs.wabt
+  nixpkgs.wabt \
+  nixpkgs.assemblyscript
 
 # install grain language (of which there is no nix package as of 2024-06-06)
 which grain || sudo curl -L --output /usr/local/bin/grain \
