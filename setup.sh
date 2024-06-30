@@ -160,7 +160,8 @@ codium \
   --install-extension muhammad-sammy.csharp \
   --install-extension Ionide.Ionide-fsharp \
   --install-extension grain-lang.vscode-grain \
-  --install-extension gengjiawen.vscode-wasm
+  --install-extension gengjiawen.vscode-wasm \
+  --install-extension nadako.vshaxe
 
 # git config
 git config --global user.name "$GIT_USER"
