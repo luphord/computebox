@@ -54,7 +54,9 @@ nix-env -iA \
   nixpkgs.deno \
   nixpkgs.wasmtime \
   nixpkgs.wabt \
-  nixpkgs.assemblyscript
+  nixpkgs.assemblyscript \
+  nixpkgs.haxe \
+  nixpkgs.hashlink
 
 # install grain language (of which there is no nix package as of 2024-06-06)
 which grain || sudo curl -L --output /usr/local/bin/grain \
