@@ -181,6 +181,7 @@ pipx ensurepath
 python3 -m pipx install rich-cli
 python3 -m pipx install euporie
 python3 -m pipx install qtile
+python3 -m pipx install uv
 
 # Add Qtile session
 sudo tee /usr/share/xsessions/qtile.desktop > /dev/null <<EOF
