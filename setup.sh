@@ -25,7 +25,7 @@ sudo apt-get install -y \
     nodejs npm \
     sbcl slime chezscheme tcc valac \
     sqlitebrowser meld glade spyder geany pspp \
-    virt-manager qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose apparmor \
+    virt-manager libvirt-daemon qemu-kvm qemu-utils qemu-block-extra docker.io docker-compose apparmor \
     screenkey impressive redshift dex rofi dmenu \
     firefox keepass2 \
     alacritty kitty
